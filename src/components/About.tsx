@@ -1,11 +1,11 @@
 const techStack = [
+  "Java",
+  "Python",
+  "C++",
   "TypeScript",
   "React",
   "Next.js",
   "Node.js",
-  "Tailwind CSS",
-  "PostgreSQL",
-  "Docker",
   "Git",
 ];
 
