@@ -22,6 +22,21 @@ export default function Footer() {
           >
             LinkedIn
           </a>
+          <a
+            href="https://mail.google.com/mail/?view=cm&to=ivana.lovric1314@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted transition-colors hover:text-foreground"
+          >
+            Email
+          </a>
+          <a
+            href="/ivana_lovric_cv_svenska.pdf"
+            download
+            className="text-sm text-muted transition-colors hover:text-foreground"
+          >
+            CV
+          </a>
         </div>
       </div>
     </footer>

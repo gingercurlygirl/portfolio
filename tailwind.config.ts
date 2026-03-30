@@ -11,7 +11,7 @@ const config: Config = {
         background: "#0a0a0a",
         foreground: "#ededed",
         muted: "#a1a1a1",
-        accent: "#3b82f6",
+        accent: "#ff2d78",
         card: "#141414",
         border: "#262626",
       },
