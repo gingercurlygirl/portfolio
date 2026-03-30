@@ -1,5 +1,5 @@
 const socials = [
-  { label: "Email", href: "ivana.lovric1314@gmail.com" },
+  { label: "Email", href: "https://mail.google.com/mail/?view=cm&to=ivana.lovric1314@gmail.com" },
   { label: "GitHub", href: "https://github.com/gingercurlygirl" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ilovric/" },
 ];

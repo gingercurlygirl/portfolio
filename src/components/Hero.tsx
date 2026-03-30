@@ -6,14 +6,13 @@ export default function Hero() {
       {/* Text */}
       <div className="flex flex-col items-center md:items-start">
         <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">
-          Software Developer
+          Software Developer · Engineer
         </p>
         <h1 className="text-balance text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl lg:text-7xl">
           Hi, I&apos;m Ivana Lovric
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted">
-          I build modern web applications with a focus on performance, accessibility,
-          and clean code. Passionate about open source and continuous learning.
+        <p className="mt-2 text-base text-muted">
+          Software Developer · Engineer · Building systems with Java, Python &amp; React
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
           <a
@@ -42,7 +41,7 @@ export default function Hero() {
       </div>
 
       {/* Profile image */}
-      <div className="mt-12 shrink-0 md:mt-0">
+      <div className="mt-12 shrink-0 md:mt-0 flex flex-col items-center gap-4">
         <div className="relative h-64 w-64 overflow-hidden rounded-full sm:h-72 sm:w-72">
           <Image
             src="/profile.png"
@@ -51,6 +50,13 @@ export default function Hero() {
             className="object-cover"
             priority
           />
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          {["Analytical problem-solving", "Systems development", "Machine learning & AI", "Agile development", "Engineering mindset", "Technical & business understanding"].map((item) => (
+            <span key={item} className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted">
+              {item}
+            </span>
+          ))}
         </div>
       </div>
     </section>
