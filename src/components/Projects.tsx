@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const projects = [
   {
@@ -104,7 +104,7 @@ function Lightbox({ images, index, alt, onClose }: { images: string[]; index: nu
         <img
           src={images[current]}
           alt={`${alt} ${current + 1}`}
-          className="max-h-[65vh] max-w-[70vw] object-contain rounded-lg"
+          className="max-h-[80vh] max-w-[90vw] sm:max-h-[65vh] sm:max-w-[70vw] object-contain rounded-lg"
         />
         <button
           onClick={onClose}
@@ -156,7 +156,7 @@ function ProjectCard({
         />
       )}
       <div
-        className={`rounded-xl border bg-card flex flex-col h-full cursor-pointer transition-colors duration-500 ${isActive ? "border-accent" : "border-border"}`}
+        className={`rounded-xl border bg-card flex flex-col h-full cursor-pointer transition-colors duration-500 overflow-hidden ${isActive ? "border-accent" : "border-border"}`}
         onClick={!isActive ? onClick : undefined}
       >
         {project.images.length > 0 && (
@@ -231,7 +231,15 @@ function ProjectCard({
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const n = projects.length;
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const prev = () => setActiveIndex((i) => (i - 1 + n) % n);
   const next = () => setActiveIndex((i) => (i + 1) % n);
@@ -247,9 +255,22 @@ export default function Projects() {
     <section id="projects" className="mx-auto max-w-5xl px-6 pt-24 pb-24">
       <h2 className="text-3xl font-bold tracking-tight text-foreground text-center">Projects</h2>
 
-      <div className="relative mt-8 flex items-center justify-center" style={{ height: "520px" }}>
+      <div
+        className="relative mt-8 flex items-center justify-center"
+        style={{ height: isMobile ? "auto" : "520px", minHeight: isMobile ? "480px" : undefined }}
+      >
         {projects.map((project, index) => {
           const offset = getOffset(index);
+
+          if (isMobile) {
+            if (offset !== 0) return null;
+            return (
+              <div key={project.title} style={{ width: "100%", height: "100%" }}>
+                <ProjectCard project={project} isActive={true} />
+              </div>
+            );
+          }
+
           if (Math.abs(offset) > 1) return null;
 
           const isActive = offset === 0;
