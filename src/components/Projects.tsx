@@ -7,7 +7,7 @@ const projects = [
   {
     title: "Trainy",
     description:
-      "Developed Trainy as a graduation project - a full-stack web application for tracking train punctuality on the Mälartåg network, integrating Trafikverket's open API with a Java/Spring Boot backend and an interactive React dashboard displaying real-time and historical delay statistics.",
+      "Developed Trainy as a graduation project: a full-stack web application for tracking train punctuality on the Mälartåg network, integrating Trafikverket's open API with a Java/Spring Boot backend and an interactive React dashboard displaying real-time and historical delay statistics.",
     tags: ["Java", "SpringBoot", "React", "Recharts"],
     github: "https://github.com/gingercurlygirl/Trainy",
     internship: false,
@@ -79,7 +79,7 @@ const projects = [
   {
     title: "Interactive Room Designer",
     description:
-      "Designed and implemented a browser-based application for selecting catalogue furniture to create custom room layouts in real time — bridging 3D visualization and programming by integrating furniture models created in 3ds Max into an interactive UI built with Vanilla JavaScript, responsive CSS and semantic HTML.",
+      "Designed and implemented a browser-based application for selecting catalogue furniture to create custom room layouts in real time - bridging 3D visualization and programming by integrating furniture models created in 3ds Max into an interactive UI built with Vanilla JavaScript, responsive CSS and semantic HTML.",
     tags: ["JavaScript", "HTML", "CSS", "3ds Max", "V-Ray", "Visualisation"],
     github: "https://github.com/gingercurlygirl/Moja-stranica",
     internship: false,

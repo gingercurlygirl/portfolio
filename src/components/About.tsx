@@ -33,7 +33,7 @@ export default function About() {
               I&apos;m a software developer in training with a Master&apos;s degree in Wood Technology - an engineering background that shapes the way I think about problems and systems. I combine hands-on experience in full-stack development (Java, Spring Boot, TypeScript, React) with machine learning and AI in Python, currently building an end-to-end ML pipeline for a Swedish government agency.
             </p>
             <p>
-              I thrive in agile teams, care about clean code, and bring an analytical mindset to everything I build. My engineering foundation means I don&apos;t just write code — I understand the context and purpose behind it.
+              I thrive in agile teams, care about clean code, and bring an analytical mindset to everything I build. My engineering foundation means I don&apos;t just write code - I understand the context and purpose behind it.
             </p>
             <p>
               Currently completing my YH education in software development for mobility services at Folkuniversitetet, with graduation in 2026. Open to junior developer roles in software development.
