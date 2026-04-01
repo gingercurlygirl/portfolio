@@ -167,7 +167,7 @@ function ProjectCard({
               fill
               className="object-cover"
               onClick={isActive ? () => setLightbox(true) : undefined}
-              style={{ cursor: isActive ? "pointer" : "default" }}
+              style={{ cursor: isActive ? "pointer" : "default", filter: "brightness(0.9) saturate(0.75) contrast(1.05)" }}
             />
             {isActive && project.images.length > 1 && (
               <>
