@@ -1,3 +1,5 @@
+import CVDropdown from "./CVDropdown";
+
 export default function Footer() {
   return (
     <footer className="border-t border-border">
@@ -30,13 +32,7 @@ export default function Footer() {
           >
             Email
           </a>
-          <a
-            href="/ivana_lovric_cv_svenska.pdf"
-            download
-            className="text-sm text-muted transition-colors hover:text-foreground"
-          >
-            CV
-          </a>
+          <CVDropdown variant="link" />
         </div>
       </div>
     </footer>

@@ -18,6 +18,22 @@ const projects = [
     ],
   },
   {
+    title: "KYH Course Matching Tool",
+    description:
+      "YH Kursmatchare is an AI-powered web application that matches teachers and subject matter experts with relevant vocational higher education courses in Sweden. Users can upload a CV or enter keywords, and the system uses OpenAI to analyze the input and search a database of thousands of course applications from MYH. Results are ranked by relevance and grouped per application, showing contact details, study periods, and links to the original PDF documents. The tool is built with Streamlit, backed by Pinecone as a vector database, and deployed on Render.",
+    tags: ["Python", "Streamlit", "OpenAI API", "Pinecone", "Render"],
+    github: "",
+    internship: true,
+    live: "",
+    images: [
+      "/projects/kyh_prvaslika.png",
+      "/projects/kyh_drugaslika.png",
+      "/projects/kyh_trecaslika.png",
+      "/projects/kyh_cetvrtaslika.png",
+      "/projects/kyh_petaslika.png",
+    ],
+  },
+  {
     title: "MYH AI Agent",
     description:
       "Built an end-to-end ML pipeline for the Swedish Agency for Higher Vocational Education (MYH) to analyze and rank vocational education applications, combining LLM-based PDF data extraction (GPT-4o) with machine learning model training, evaluation and cross-validation.",
@@ -95,6 +111,16 @@ const projects = [
 function Lightbox({ images, index, alt, onClose }: { images: string[]; index: number; alt: string; onClose: () => void }) {
   const [current, setCurrent] = useState(index);
 
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "ArrowLeft") setCurrent((c) => (c - 1 + images.length) % images.length);
+      if (e.key === "ArrowRight") setCurrent((c) => (c + 1) % images.length);
+      if (e.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [images.length, onClose]);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
@@ -137,13 +163,18 @@ function ProjectCard({
   project,
   isActive,
   onClick,
+  onLightboxChange,
 }: {
   project: typeof projects[0];
   isActive: boolean;
   onClick?: () => void;
+  onLightboxChange?: (open: boolean) => void;
 }) {
   const [current, setCurrent] = useState(0);
   const [lightbox, setLightbox] = useState(false);
+
+  const openLightbox = () => { setLightbox(true); onLightboxChange?.(true); };
+  const closeLightbox = () => { setLightbox(false); onLightboxChange?.(false); };
 
   return (
     <>
@@ -152,7 +183,7 @@ function ProjectCard({
           images={project.images}
           index={current}
           alt={project.title}
-          onClose={() => setLightbox(false)}
+          onClose={closeLightbox}
         />
       )}
       <div
@@ -166,7 +197,7 @@ function ProjectCard({
               alt={`${project.title} screenshot ${current + 1}`}
               fill
               className="object-cover"
-              onClick={isActive ? () => setLightbox(true) : undefined}
+              onClick={isActive ? openLightbox : undefined}
               style={{ cursor: isActive ? "pointer" : "default", filter: "brightness(0.9) saturate(0.75) contrast(1.05)" }}
             />
             {isActive && project.images.length > 1 && (
@@ -232,6 +263,7 @@ function ProjectCard({
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const n = projects.length;
 
   useEffect(() => {
@@ -240,6 +272,16 @@ export default function Projects() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
+
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) {
+      if (lightboxOpen) return;
+      if (e.key === "ArrowLeft") setActiveIndex((i) => (i - 1 + n) % n);
+      if (e.key === "ArrowRight") setActiveIndex((i) => (i + 1) % n);
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxOpen, n]);
 
   const prev = () => setActiveIndex((i) => (i - 1 + n) % n);
   const next = () => setActiveIndex((i) => (i + 1) % n);
@@ -266,7 +308,7 @@ export default function Projects() {
             if (offset !== 0) return null;
             return (
               <div key={project.title} style={{ width: "100%", height: "100%" }}>
-                <ProjectCard project={project} isActive={true} />
+                <ProjectCard project={project} isActive={true} onLightboxChange={setLightboxOpen} />
               </div>
             );
           }
@@ -296,7 +338,7 @@ export default function Projects() {
               }}
               onClick={() => !isActive && setActiveIndex(index)}
             >
-              <ProjectCard project={project} isActive={isActive} />
+              <ProjectCard project={project} isActive={isActive} onLightboxChange={setLightboxOpen} />
             </div>
           );
         })}
