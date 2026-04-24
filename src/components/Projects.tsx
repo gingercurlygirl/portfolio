@@ -31,6 +31,7 @@ const projects = [
       "/projects/kyh_trecaslika.png",
       "/projects/kyh_cetvrtaslika.png",
       "/projects/kyh_petaslika.png",
+      "/projects/kyh_sestaslika.png",
     ],
   },
   {
